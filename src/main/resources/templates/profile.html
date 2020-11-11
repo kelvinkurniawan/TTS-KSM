@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Profile</h1>
+        
+        <a th:href="@{/profil/address/}" th:text="Address"></a>
+        <a th:href="@{/profil/contact/}" th:text="Contact"></a>
+        <a th:href="@{/profil/currentoccupation/}" th:text="Occupation"></a>
+        <a th:href="@{/profil/education/}" th:text="Education"></a>
+        
+        <table th:each="as : ${profil}" border="1">
+            <tr>
+                <td><p th:text="${as.birthDate}"></p></td>
+            </tr>
+            <tr>
+                <td><p th:text="${as.email}"></p></td>
+            </tr>
+            <tr>
+                <td><p th:text="${as.gender}"></p></td>
+            </tr>
+            <tr>
+                <td><p th:text="${as.name}"></p></td>
+            </tr>
+        </table>
+    </body>
+</html>
