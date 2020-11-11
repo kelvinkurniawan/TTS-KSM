@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <div th:replace="fragments/header"></div>
+    <body class="with-bg pb-5">
+        <div class="container col-md-10">
+
+            <div class="card bg-white mt-5 mx-5 p-5">
+
+                <h3 class="display-4 mb-5">My Profile</h3>
+
+                <div class="nav-profile d-flex mb-5">
+                    <a th:href="@{/profile/}" th:text="General" class="nav-profile-btn"></a>
+                    <a th:href="@{/profile/address/}" th:text="Address" class="nav-profile-btn"></a>
+                    <a th:href="@{/profile/contact/}" th:text="Contact" class="nav-profile-btn active"></a>
+                    <a th:href="@{/profile/currentoccupation/}" th:text="Occupation" class="nav-profile-btn"></a>
+                    <a th:href="@{/profile/education/}" th:text="Education" class="nav-profile-btn"></a>
+                </div>
+
+                <div class="content">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="photo-section">
+                                <img src="/images/photo.jpg" class="photo">
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <table th:each="as : ${profil}" width="100%" class="table table-borderless">
+                                <tbody>
+                                    <tr>
+                                        <td class="form-identifier" width="30%">Phone</td>
+                                        <td th:text="${as.phone}" class="form-value"></td>
+                                        <td width="3%"><i class="fas fa-phone"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-identifier" width="30%">Instagram</td>
+                                        <td th:text="${as.instagram}" class="form-value"></td>
+                                        <td width="3%"><i class="fab fa-instagram"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-identifier" width="30%">LinkedIn</td>
+                                        <td th:text="${as.linkedin}" class="form-value"></td>
+                                        <td width="3%"><i class="fab fa-linkedin"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-identifier" width="30%">Facebook</td>
+                                        <td th:text="${as.facebook}" class="form-value"></td>
+                                        <td width="3%"><i class="fab fa-facebook-f"></i></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="action-bar text-right">
+                                <a href="#" class="btn btn-info bg-my-color">Edit Profile</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div th:replace="fragments/footer"></div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

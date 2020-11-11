@@ -22,38 +22,38 @@ public class ProfileController {
     
     private final String tempId = "USER-00022";
     
-    @GetMapping("/profil/")
+    @GetMapping("/profile/")
     public String profilBasic(Model model) {
         model.addAttribute("profil", profileService.getProfilBasic(tempId));
         System.out.println(profileService.getProfilBasic(tempId));
-        return "profile";
+        return "profiles/profile";
     }
     
-    @GetMapping("/profil/address/")
+    @GetMapping("/profile/address/")
     public String profilAddress(Model model) {
         model.addAttribute("profil", profileService.getProfilAddress(tempId));
         System.out.println(profileService.getProfilAddress(tempId));
-        return "profil_address";
+        return "profiles/address";
     }
     
-    @GetMapping("/profil/contact/")
+    @GetMapping("/profile/contact/")
     public String profilContact(Model model) {
         model.addAttribute("profil", profileService.getProfilContact(tempId));
         System.out.println(profileService.getProfilContact(tempId));
-        return "profil_contact";
+        return "profiles/contact";
     }
     
-    @GetMapping("/profil/currentoccupation/")
+    @GetMapping("/profile/currentoccupation/")
     public String profilCurrentOccupation(Model model) {
         model.addAttribute("profil", profileService.getProfilOccupation(tempId));
         System.out.println(profileService.getProfilOccupation(tempId));
-        return "profil_occupation";
+        return "profiles/occupation";
     }
     
-    @GetMapping("/profil/education/")
+    @GetMapping("/profile/education/")
     public String profilEducation(Model model) {
         model.addAttribute("profil", profileService.getProfilEducation(tempId));
         System.out.println(profileService.getProfilEducation(tempId));
-        return "profil_edu";
+        return "profiles/education";
     }
 }

@@ -1,0 +1,107 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Nov 12, 2020, 1:01:37 AM
+    Author     : kelvi
+*/
+
+.with-bg{
+    background: url("/images/bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    width: 100%;
+    height: 100%;
+}
+.nav-profile {
+    border-bottom: solid 1px #ddd;
+    position: relative;
+}
+.nav-profile-btn{
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #1c1c1c;
+    border-top: solid 1px #ddd;
+    border-left: solid 1px #ddd;
+    border-right: solid 1px #ddd;
+    background: #fafafa;
+}
+
+.nav-profile-btn.active, .nav-profile-btn:hover{
+    color: #34c0eb;
+    border-top: solid 2px #34c0eb;
+    border-left: solid 1px #ddd;
+    border-right: solid 1px #ddd;
+    background: #fff;
+    text-decoration: none;
+    transition: 1s all;
+}
+/*.nav-profile-btn.active::before{
+    content: "";
+    position: absolute;
+    border-bottom: solid 2px #fff;
+    top: 45px;
+    left: 0px;
+    width: 10.85%;
+}*/
+
+.photo-section{
+    width: 80%;
+}
+
+.photo{
+    width: 100%;
+    border-radius: 50%;
+}
+
+.form-identifier{
+    text-transform: uppercase;
+    color: #6c757d!important;
+    letter-spacing: 1px;
+}
+
+.form-value{
+    border-bottom: 1px #dedede solid!important;
+}
+
+.text-my-color{
+    color: #34c0eb;
+}
+
+.bg-my-color{
+    background: #34c0eb;
+    transition: 1s all;
+}
+
+.btn.bg-my-color:hover{
+    background: #0eb3e6;
+    transition: 1s all;
+}
+
+
+.form-control.plaintext{
+    background: #fff;
+    border: #fff;
+}
+
+.form-control.plaintext:active, .form-control.plaintext:focus, .form-control:focus{
+    border: 0;
+    outline: 0;
+    box-shadow: none;
+}
+
+.form-control, .form-control:focus{    
+    border: 0;
+    border-bottom: solid 1px #dedede!important;
+}
+
+.hidden{
+    display: none;
+}
+
+.editable.true input{
+    color: #9a9a9a!important;
+}

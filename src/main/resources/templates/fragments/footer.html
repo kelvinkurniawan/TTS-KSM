@@ -1,0 +1,35 @@
+<div th:fragment="footer">
+    <footer></footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    <script src="/js/bootstrap-datepicker.js"></script>
+    <script src="https://kit.fontawesome.com/21bb8f7fe9.js" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $('#major').select2();
+            $('#university').select2();
+            $('#gender').select2();
+            $("#birthday").datepicker({
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                todayHighlight: true,
+            });
+        });
+        
+        function editButton(){
+            $(".form-control").attr("readonly", false);
+            $(".form-control").removeClass("plaintext");
+            $(".editable").addClass("true");
+            $("#editButton").hide();
+            $(".hidden").show();
+        }
+        
+        function cancelButton(){
+            $(".form-control").attr("readonly", true);
+            $(".form-control").addClass("plaintext");
+            $(".editable").removeClass("true");
+            $("#editButton").show();
+            $(".hidden").hide();
+        }
+    </script>
+</div>
