@@ -9,9 +9,9 @@ import lombok.Data;
 
 /**
  *
- * @author Kelvi
+ * @author kelvi
  */
 @Data
-public class RegisterOutput {
+public class EmailOutput {
     private boolean status;
 }

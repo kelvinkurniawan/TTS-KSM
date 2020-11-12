@@ -8,7 +8,7 @@ package com.ksm.tts.entities;
 import lombok.Data;
 /**
  *
- * @author Ardian
+ * @author Kelvi
  */
 @Data
 public class RegisterInput {

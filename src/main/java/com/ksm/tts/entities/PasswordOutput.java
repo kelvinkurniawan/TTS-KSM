@@ -9,9 +9,9 @@ import lombok.Data;
 
 /**
  *
- * @author Kelvi
+ * @author kelvi
  */
 @Data
-public class RegisterOutput {
-    private boolean status;
+public class PasswordOutput {
+    public boolean status;
 }
