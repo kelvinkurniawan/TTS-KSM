@@ -14,12 +14,19 @@ import com.ksm.tts.services.MajorService;
 import com.ksm.tts.services.PasswordService;
 import com.ksm.tts.services.RegisterService;
 import com.ksm.tts.services.UniversityService;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
@@ -55,6 +62,15 @@ public class AuthenticationController {
         return "home";
     }
 
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null) {
+            new SecurityContextLogoutHandler().logout(request, response, auth);
+        }
+        return "redirect:/";
+    }
+
     @GetMapping("/register")
     public String register(Model model) {
         model.addAttribute("person", new RegisterInput());
@@ -72,24 +88,24 @@ public class AuthenticationController {
     @GetMapping("/forgotpassword")
     public String forgotPasswordInputEmail(Model model) {
         model.addAttribute("email", new PasswordInput());
-        return "forgotpasswordinputemail";
+        return "forgotpassword/forgotpasswordinputemail";
     }
-    
+
     @PostMapping("/forgotpassword/perform_send_email")
-    public String performSendEmail(EmailInput emailInput){
+    public String performSendEmail(EmailInput emailInput) {
         passwordService.performGetEmail(emailInput);
         return "redirect:/forgotpassword?result=success";
     }
-    
+
     @GetMapping("/forgotpassword/{verificationCode}")
-    public String forgotPasswordInputNewPassword(@PathVariable("verificationCode") String verificationCode, Model model){
+    public String forgotPasswordInputNewPassword(@PathVariable("verificationCode") String verificationCode, Model model) {
         model.addAttribute("password", new PasswordInput());
         model.addAttribute("verificationCode", verificationCode);
-        return "forgotpasswordinputnewpassword";
+        return "forgotpassword/forgotpasswordinputnewpassword";
     }
-    
+
     @PostMapping("forgotpassword/perform_update/{verificationCode}")
-    public String performPasswordUpdate(@PathVariable("verificationCode") String verificationCode, PasswordInput passwordInput){
+    public String performPasswordUpdate(@PathVariable("verificationCode") String verificationCode, PasswordInput passwordInput) {
         passwordService.performPostNewPassword(passwordInput, verificationCode);
         return "redirect:/index?result=passwordchanged";
     }

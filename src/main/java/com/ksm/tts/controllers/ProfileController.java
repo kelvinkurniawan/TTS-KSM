@@ -13,6 +13,7 @@ import com.ksm.tts.entities.profile.Education;
 import com.ksm.tts.services.MajorService;
 import com.ksm.tts.services.ProfileService;
 import com.ksm.tts.services.UniversityService;
+import com.ksm.tts.utils.InformationUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,16 +35,15 @@ public class ProfileController {
 
     @Autowired
     UniversityService universityService;
-
-    private final String tempId = "USER-00022";
-
+    
     @GetMapping("/profile/")
     public String profileBasic(Model model) {
-        model.addAttribute("basic", profileService.getProfileBasic(tempId));
-        model.addAttribute("address", profileService.getProfileAddress(tempId));
-        model.addAttribute("contact", profileService.getProfileContact(tempId));
-        model.addAttribute("occupation", profileService.getProfileOccupation(tempId));
-        model.addAttribute("education", profileService.getProfileEducation(tempId));
+        System.out.println(InformationUser.userId);
+        model.addAttribute("basic", profileService.getProfileBasic(InformationUser.userId));
+        model.addAttribute("address", profileService.getProfileAddress(InformationUser.userId));
+        model.addAttribute("contact", profileService.getProfileContact(InformationUser.userId));
+        model.addAttribute("occupation", profileService.getProfileOccupation(InformationUser.userId));
+        model.addAttribute("education", profileService.getProfileEducation(InformationUser.userId));
         model.addAttribute("majors", majorService.getAll());
         model.addAttribute("universities", universityService.getAll());
         return "profiles/profile";
