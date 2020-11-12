@@ -10,7 +10,9 @@ import com.ksm.tts.entities.profile.Basic;
 import com.ksm.tts.entities.profile.Contact;
 import com.ksm.tts.entities.profile.CurrentOccupation;
 import com.ksm.tts.entities.profile.Education;
+import com.ksm.tts.services.MajorService;
 import com.ksm.tts.services.ProfileService;
+import com.ksm.tts.services.UniversityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +29,12 @@ public class ProfileController {
     @Autowired
     ProfileService profileService;
 
+    @Autowired
+    MajorService majorService;
+
+    @Autowired
+    UniversityService universityService;
+
     private final String tempId = "USER-00022";
 
     @GetMapping("/profile/")
@@ -36,6 +44,8 @@ public class ProfileController {
         model.addAttribute("contact", profileService.getProfileContact(tempId));
         model.addAttribute("occupation", profileService.getProfileOccupation(tempId));
         model.addAttribute("education", profileService.getProfileEducation(tempId));
+        model.addAttribute("majors", majorService.getAll());
+        model.addAttribute("universities", universityService.getAll());
         return "profiles/profile";
     }
 

@@ -5,7 +5,7 @@
  */
 package com.ksm.tts.services;
 
-import com.ksm.tts.entities.Majors;
+import com.ksm.tts.entities.Major;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
@@ -27,14 +27,13 @@ public class MajorService {
     
     private final String uri = "http://116.254.101.228:8080/ma_test/";
     
-    public List<Majors> getAll(){
-        List<Majors> result;
+    public List<Major> getAll(){
+        List<Major> result;
 
-        ResponseEntity<List<Majors>> response = restTemplate.exchange(
-                uri + "get/majors",
+        ResponseEntity<List<Major>> response = restTemplate.exchange(uri + "get/majors",
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<List<Majors>>() {
+                new ParameterizedTypeReference<List<Major>>() {
         });
 
         result = response.getBody();

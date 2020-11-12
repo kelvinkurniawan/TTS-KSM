@@ -27,6 +27,10 @@ and open the template in the editor.
     border-top: solid 1px #ddd!important;
     border-right: solid 1px #ddd!important;
     background: #fafafa;
+    font-size: 9px;
+    letter-spacing: 1px;
+    font-weight: 700;
+    text-transform: uppercase;
 }
 
 .nav-profile-btn.active, .nav-profile-btn:hover{
@@ -101,4 +105,34 @@ and open the template in the editor.
 
 .editable.true input{
     color: #9a9a9a!important;
+}
+
+.select2-container--default .select2-selection--single{
+    border: 0;
+    border-bottom: solid 1px #dedede!important;
+    height: 32px;
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered {
+    display: block;
+    padding-left: 12px;
+    padding-right: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered:focus, .select2-container--default .select2-selection--single:focus{
+    outline: 0;
+}
+.editable.true .select2-container--default .select2-selection--single .select2-selection__rendered{
+    color: #9a9a9a!important;
+}
+.editable .select2-container{
+    margin-top: 8px;
+    width: 100%!important;
+}
+
+.select2-container--default.select2-container--disabled .select2-selection--single{
+    background: #fff!important;
 }

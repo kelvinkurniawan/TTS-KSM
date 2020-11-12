@@ -12,9 +12,7 @@ import lombok.Data;
  * @author kelvi
  */
 @Data
-public class Majors {
+public class Province {
     private int id;
-    private int count;
-    private String name;
-    private boolean valid;
+    private String nama;
 }
