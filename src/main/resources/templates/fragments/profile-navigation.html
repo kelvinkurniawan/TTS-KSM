@@ -1,9 +1,18 @@
-<div th:fragment="profile-navigation">                
-    <div class="nav-profile d-flex mb-5">
-        <a th:href="@{/profile/}" th:text="General" class="nav-profile-btn active"></a>
-        <a th:href="@{/profil/address/}" th:text="Address" class="nav-profile-btn"></a>
-        <a th:href="@{/profil/contact/}" th:text="Contact" class="nav-profile-btn"></a>
-        <a th:href="@{/profil/currentoccupation/}" th:text="Occupation" class="nav-profile-btn"></a>
-        <a th:href="@{/profil/education/}" th:text="Education" class="nav-profile-btn"></a>
-    </div>
-</div>
+
+<ul class="nav nav-tabs" id="myTab" role="tablist" th:fragment="profile-navigation">
+    <li class="nav-item" role="presentation">
+        <a class="nav-link nav-profile-btn  active" id="basic-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link nav-profile-btn" id="address-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link nav-profile-btn" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link nav-profile-btn" id="ocupation-tab" data-toggle="tab" href="#occupation" role="tab" aria-controls="occupation" aria-selected="false">Occupation</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link nav-profile-btn" id="education-tab" data-toggle="tab" href="#education" role="tab" aria-controls="education" aria-selected="false">education</a>
+    </li>
+</ul>
