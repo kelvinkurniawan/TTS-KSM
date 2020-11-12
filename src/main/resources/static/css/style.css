@@ -21,20 +21,17 @@ and open the template in the editor.
     position: relative;
 }
 .nav-profile-btn{
+    border-radius: 0!important;
     padding: 10px 20px;
-    text-decoration: none;
-    color: #1c1c1c;
-    border-top: solid 1px #ddd;
-    border-left: solid 1px #ddd;
-    border-right: solid 1px #ddd;
+    color: #1c1c1c;    
+    border-top: solid 1px #ddd!important;
+    border-right: solid 1px #ddd!important;
     background: #fafafa;
 }
 
 .nav-profile-btn.active, .nav-profile-btn:hover{
-    color: #34c0eb;
-    border-top: solid 2px #34c0eb;
-    border-left: solid 1px #ddd;
-    border-right: solid 1px #ddd;
+    color: #34c0eb!important;
+    border-top: solid 2px #34c0eb!important;
     background: #fff;
     text-decoration: none;
     transition: 1s all;

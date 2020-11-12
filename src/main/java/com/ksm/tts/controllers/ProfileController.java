@@ -24,7 +24,11 @@ public class ProfileController {
     
     @GetMapping("/profile/")
     public String profilBasic(Model model) {
-        model.addAttribute("profil", profileService.getProfilBasic(tempId));
+        model.addAttribute("basic", profileService.getProfilBasic(tempId));
+        model.addAttribute("address", profileService.getProfilAddress(tempId));
+        model.addAttribute("contact", profileService.getProfilContact(tempId));
+        model.addAttribute("occupation", profileService.getProfilOccupation(tempId));
+        model.addAttribute("education", profileService.getProfilEducation(tempId));
         System.out.println(profileService.getProfilBasic(tempId));
         return "profiles/profile";
     }
