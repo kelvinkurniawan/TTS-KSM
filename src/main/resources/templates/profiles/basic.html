@@ -7,37 +7,38 @@
                 </div>
             </div>
             <div class="col-md-8">
-                <form action="@{/save}" method="post">
-                    <div th:each="as : ${basic}" class="editable">
+                <form th:object="${basic}" th:action="@{/profile/basic/perform_update}" method="post">
+                    <div class="editable">
+                        <input type="hidden" readonly class="form-control plaintext" id="Name" th:field="*{id}">
                         <div class="form-group row">
                             <label for="Name" class="col-sm-3 col-form-label form-identifier">Name</label>
                             <div class="col-sm-9">
-                                <input type="text" readonly class="form-control plaintext" id="Name" th:value="*{as.name}">
+                                <input type="text" readonly class="form-control plaintext" id="Name" th:field="*{name}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="Email" class="col-sm-3 col-form-label form-identifier">Email</label>
                             <div class="col-sm-9">
-                                <input type="text" readonly class="form-control plaintext" id="Email" th:value="*{as.email}">
+                                <input type="text" readonly class="form-control plaintext" id="Email" th:field="*{email}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="Gender" class="col-sm-3 col-form-label form-identifier">Gender</label>
                             <div class="col-sm-9">
-                                <input type="text" readonly class="form-control plaintext" id="Gender" th:value="*{as.gender}">
+                                <input type="text" readonly class="form-control plaintext" id="Gender" th:field="*{gender}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="Birth" class="col-sm-3 col-form-label form-identifier">Birth</label>
                             <div class="col-sm-9">
-                                <input type="text" readonly class="form-control plaintext" id="birthday" th:value="*{as.birthDate}">
+                                <input type="text" readonly class="form-control plaintext" id="birthday" th:field="*{birthDate}">
                             </div>
                         </div>
                     </div>
                     <div class="action-bar text-right">
                         <a href="#" class="btn btn-info bg-my-color editButton" onclick="editButton()">Edit Profile</a>
                         <div class="hidden">
-                            <a href="#" class="btn btn-info bg-my-color" id="controlForm" onclick="saveButton()">Save Changes</a>
+                            <button class="btn btn-info bg-my-color" id="controlForm" type="submit">Save Changes</button>
                             <a href="#" class="btn btn-info btn-danger" id="controlForm" onclick="cancelButton()">Cancel</a>
                         </div>
                     </div>

@@ -5,11 +5,17 @@
  */
 package com.ksm.tts.controllers;
 
+import com.ksm.tts.entities.profile.Address;
+import com.ksm.tts.entities.profile.Basic;
+import com.ksm.tts.entities.profile.Contact;
+import com.ksm.tts.entities.profile.CurrentOccupation;
+import com.ksm.tts.entities.profile.Education;
 import com.ksm.tts.services.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 /**
  *
@@ -17,47 +23,50 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class ProfileController {
+
     @Autowired
     ProfileService profileService;
-    
+
     private final String tempId = "USER-00022";
-    
+
     @GetMapping("/profile/")
-    public String profilBasic(Model model) {
-        model.addAttribute("basic", profileService.getProfilBasic(tempId));
-        model.addAttribute("address", profileService.getProfilAddress(tempId));
-        model.addAttribute("contact", profileService.getProfilContact(tempId));
-        model.addAttribute("occupation", profileService.getProfilOccupation(tempId));
-        model.addAttribute("education", profileService.getProfilEducation(tempId));
-        System.out.println(profileService.getProfilBasic(tempId));
+    public String profileBasic(Model model) {
+        model.addAttribute("basic", profileService.getProfileBasic(tempId));
+        model.addAttribute("address", profileService.getProfileAddress(tempId));
+        model.addAttribute("contact", profileService.getProfileContact(tempId));
+        model.addAttribute("occupation", profileService.getProfileOccupation(tempId));
+        model.addAttribute("education", profileService.getProfileEducation(tempId));
         return "profiles/profile";
     }
-    
-    @GetMapping("/profile/address/")
-    public String profilAddress(Model model) {
-        model.addAttribute("profil", profileService.getProfilAddress(tempId));
-        System.out.println(profileService.getProfilAddress(tempId));
-        return "profiles/address";
+
+    @PostMapping("/profile/basic/perform_update")
+    public String profileBasicPerformUpdate(Basic basic) {
+        profileService.saveProfileBasic(basic);
+        return "redirect:/profile/";
     }
-    
-    @GetMapping("/profile/contact/")
-    public String profilContact(Model model) {
-        model.addAttribute("profil", profileService.getProfilContact(tempId));
-        System.out.println(profileService.getProfilContact(tempId));
-        return "profiles/contact";
+
+    @PostMapping("/profile/address/perform_update")
+    public String profileAddressPerformUpdate(Address address) {
+        profileService.saveProfileAddress(address);
+        return "redirect:/profile/#address";
     }
-    
-    @GetMapping("/profile/currentoccupation/")
-    public String profilCurrentOccupation(Model model) {
-        model.addAttribute("profil", profileService.getProfilOccupation(tempId));
-        System.out.println(profileService.getProfilOccupation(tempId));
-        return "profiles/occupation";
+
+    @PostMapping("/profile/contact/perform_update")
+    public String profileContactPerformUpdate(Contact contact) {
+        profileService.saveProfileContact(contact);
+        return "redirect:/profile/#contact";
     }
-    
-    @GetMapping("/profile/education/")
-    public String profilEducation(Model model) {
-        model.addAttribute("profil", profileService.getProfilEducation(tempId));
-        System.out.println(profileService.getProfilEducation(tempId));
-        return "profiles/education";
+
+    @PostMapping("/profile/currentoccupation/perform_update")
+    public String profileProfilePerformUpdate(CurrentOccupation currentOccupation) {
+        profileService.saveProfileOccupation(currentOccupation);
+        return "redirect:/profile/#occupation";
     }
+
+    @PostMapping("/profile/education/perform_update")
+    public String profileEducationPerformUpdate(Education education) {
+        profileService.saveProfileEducation(education);
+        return "redirect:/profile/#education";
+    }
+
 }
