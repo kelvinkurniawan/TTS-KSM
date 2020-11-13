@@ -3,8 +3,9 @@
     <div class="content pt-5">
         <div class="row">
             <div class="col-md-4">
-                <div class="photo-section">
-                    <img src="/images/photo.jpg" class="photo">
+                <div class="photo-section text-center">
+                    <img th:src="@{/files/} + ${userId} + @{.jpg}" class="photo mb-3">
+                    <a href="/profile/changephoto" class="btn btn-danger">Change photo</a>
                 </div>
             </div>
             <div class="col-md-8">
