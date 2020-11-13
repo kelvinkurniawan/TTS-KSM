@@ -15,17 +15,15 @@ and open the template in the editor.
                     <h3 class="display-4">My Profile</h3>
                     <a href="/logout" class="btn btn-danger" style="height: 100%">Logout</a>
                 </div>
-
-                <div th:replace="fragments/profile-navigation"></div>
-
-                <div class="tab-content" id="myTabContent">
-                    <div th:replace="profiles/basic"></div>
-                    <div th:replace="profiles/address"></div>
-                    <div th:replace="profiles/contact"></div>
-                    <div th:replace="profiles/occupation"></div>
-                    <div th:replace="profiles/education"></div>
+                
+                <div class="col-md-12">
+                    <img th:src="@{/images/} + ${userId}" />
                 </div>
-
+                
+                <div class="col-md-12">
+                    <input type="file" name="image" accept="image/png, image/jpeg" />
+                </div>
+                
                 <div th:replace="fragments/footer"></div>
 
             </div>

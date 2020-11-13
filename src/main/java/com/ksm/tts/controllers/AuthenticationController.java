@@ -6,7 +6,6 @@
 package com.ksm.tts.controllers;
 
 import com.ksm.tts.entities.EmailInput;
-import com.ksm.tts.entities.LoginInput;
 import com.ksm.tts.entities.PasswordInput;
 import com.ksm.tts.entities.RegisterInput;
 import com.ksm.tts.services.LoginService;
@@ -50,16 +49,9 @@ public class AuthenticationController {
     @Autowired
     PasswordService passwordService;
 
-    @GetMapping("")
-    public String index(Model model) {
-        model.addAttribute("account", new LoginInput());
-        return "index";
-    }
-
-    @PostMapping("/login")
-    public String login(LoginInput input, Model model) {
-        System.out.println(loginService.login(input));
-        return "home";
+    @GetMapping("/login")
+    public String login() {
+        return "login";
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
@@ -107,6 +99,6 @@ public class AuthenticationController {
     @PostMapping("forgotpassword/perform_update/{verificationCode}")
     public String performPasswordUpdate(@PathVariable("verificationCode") String verificationCode, PasswordInput passwordInput) {
         passwordService.performPostNewPassword(passwordInput, verificationCode);
-        return "redirect:/index?result=passwordchanged";
+        return "redirect:/?result=passwordchanged";
     }
 }

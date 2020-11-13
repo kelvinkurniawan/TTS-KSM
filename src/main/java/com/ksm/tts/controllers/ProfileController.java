@@ -36,7 +36,7 @@ public class ProfileController {
     @Autowired
     UniversityService universityService;
     
-    @GetMapping("/profile/")
+    @GetMapping("/")
     public String profileBasic(Model model) {
         System.out.println(InformationUser.userId);
         model.addAttribute("basic", profileService.getProfileBasic(InformationUser.userId));
@@ -48,35 +48,41 @@ public class ProfileController {
         model.addAttribute("universities", universityService.getAll());
         return "profiles/profile";
     }
+    
+    @GetMapping("/profile/changephoto")
+    public String updatePhoto(Model model){
+        model.addAttribute("userId", InformationUser.userId);
+        return "profiles/updatephoto";
+    }
 
     @PostMapping("/profile/basic/perform_update")
     public String profileBasicPerformUpdate(Basic basic) {
         profileService.saveProfileBasic(basic);
-        return "redirect:/profile/";
+        return "redirect:/?result=update_success";
     }
 
     @PostMapping("/profile/address/perform_update")
     public String profileAddressPerformUpdate(Address address) {
         profileService.saveProfileAddress(address);
-        return "redirect:/profile/#address";
+        return "redirect:/?result=update_success";
     }
 
     @PostMapping("/profile/contact/perform_update")
     public String profileContactPerformUpdate(Contact contact) {
         profileService.saveProfileContact(contact);
-        return "redirect:/profile/#contact";
+        return "redirect:/?result=update_success";
     }
 
     @PostMapping("/profile/currentoccupation/perform_update")
     public String profileProfilePerformUpdate(CurrentOccupation currentOccupation) {
         profileService.saveProfileOccupation(currentOccupation);
-        return "redirect:/profile/#occupation";
+        return "redirect:/?result=update_success";
     }
 
     @PostMapping("/profile/education/perform_update")
     public String profileEducationPerformUpdate(Education education) {
         profileService.saveProfileEducation(education);
-        return "redirect:/profile/#education";
+        return "redirect:/?result=update_success";
     }
 
 }

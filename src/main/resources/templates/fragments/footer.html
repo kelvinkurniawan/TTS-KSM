@@ -18,8 +18,8 @@
                 provinceId = $('#province option:selected').attr("provId");
                 getCity();
             });
-            
-            $('#province').change(function(){
+
+            $('#province').change(function () {
                 getCity();
             });
 
@@ -43,12 +43,28 @@
             });
         });
 
-        function getProvinceId() {
+
+        var getUrlParameter = function getUrlParameter(sParam) {
+            var sPageURL = window.location.search.substring(1),
+                    sURLVariables = sPageURL.split('&'),
+                    sParameterName,
+                    i;
+
+            for (i = 0; i < sURLVariables.length; i++) {
+                sParameterName = sURLVariables[i].split('=');
+
+                if (sParameterName[0] === sParam) {
+                    return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+                }
+            }
+        };
+
+        var getProvinceId = function getProvinceId() {
             provinceId = $('#province option:selected').attr("provId");
             return provinceId;
         }
-        
-        function getCity(){
+
+        function getCity() {
             $.getJSON("http://dev.farizdotid.com/api/daerahindonesia/kota?id_provinsi=" + getProvinceId(), function (result) {
                 $.each(result, function (parent, field) {
                     $('#city').empty();
