@@ -32,6 +32,8 @@ public class CustAuthProviderConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .cors()
+                .and()
                 .authorizeRequests()
                 .antMatchers("/login").anonymous()
                 .antMatchers("/css/**").permitAll()
@@ -39,6 +41,7 @@ public class CustAuthProviderConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/images/**").permitAll()
                 .antMatchers("/forgotpassword/**").permitAll()
                 .antMatchers("/uploads/**").permitAll()
+                .antMatchers("/api/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

@@ -3,12 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ksm.tts.utils;
+package com.ksm.tts.entities;
+
+import java.util.List;
+import lombok.Data;
 
 /**
  *
  * @author kelvi
  */
-class root {
-    
+@Data
+public class ProvinceOutput {
+    List <Province> provinsi;
 }

@@ -8,13 +8,11 @@
     <script>
         $(document).ready(function () {
             // Load Location
-            $.getJSON("http://dev.farizdotid.com/api/daerahindonesia/provinsi", function (result) {
-                $.each(result, function (parent, field) {
-                    for (var i = 0; i < field.length; i++) {
-                        $('#province').append(`<option value="${field[i].nama}" provId="${field[i].id}">${field[i].nama}</option>`);
-                    }
-                    $('#province').val($('#provinceTemp').val());
-                });
+            $.getJSON("/api/getprovince", function (result) {
+                for (var i = 0; i < result.length; i++) {
+                    $('#province').append(`<option value="${result[i].nama}" provId="${result[i].id}">${result[i].nama}</option>`);
+                }
+                $('#province').val($('#provinceTemp').val());
                 provinceId = $('#province option:selected').attr("provId");
                 getCity();
             });

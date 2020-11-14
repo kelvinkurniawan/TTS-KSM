@@ -40,7 +40,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        String name = authentication.getName();
+        String name = authentication.getName(); //email
         String password = authentication.getCredentials().toString();
       
         loginInput.setEmail(name);

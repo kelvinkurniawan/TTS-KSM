@@ -27,7 +27,6 @@ public class FileUploadUtil {
         } catch (IOException e) {
             throw new RuntimeException("Could not store the file. Error: " + e.getMessage());
         }
-
     }
 
     public Resource load(String filename) {
