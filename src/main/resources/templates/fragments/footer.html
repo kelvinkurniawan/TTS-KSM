@@ -62,15 +62,13 @@
             return provinceId;
         }
 
-        function getCity() {
-            $.getJSON("http://dev.farizdotid.com/api/daerahindonesia/kota?id_provinsi=" + getProvinceId(), function (result) {
-                $.each(result, function (parent, field) {
-                    $('#city').empty();
-                    for (var i = 0; i < field.length; i++) {
-                        $('#city').append(`<option value="${field[i].nama}" cityId="${field[i].id}">${field[i].nama}</option>`);
-                    }
-                    $('#city').val($('#cityTemp').val());
-                });
+        var getCity = function getCity() {
+            $.getJSON("/api/getcity/" + getProvinceId(), function (result) {
+                $('#city').empty();
+                for (var i = 0; i < result.length; i++) {
+                    $('#city').append(`<option value="${result[i].nama}" cityId="${result[i].id}">${result[i].nama}</option>`);
+                }
+                $('#city').val($('#cityTemp').val());
             });
         }
 

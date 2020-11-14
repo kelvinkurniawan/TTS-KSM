@@ -5,20 +5,17 @@
  */
 package com.ksm.tts.controllers;
 
-import com.ksm.tts.entities.Province;
 import com.ksm.tts.entities.profile.Address;
 import com.ksm.tts.entities.profile.Basic;
 import com.ksm.tts.entities.profile.Contact;
 import com.ksm.tts.entities.profile.CurrentOccupation;
 import com.ksm.tts.entities.profile.Education;
-import com.ksm.tts.services.LocationService;
 import com.ksm.tts.services.MajorService;
 import com.ksm.tts.services.ProfileService;
 import com.ksm.tts.services.UniversityService;
 import com.ksm.tts.utils.FileUploadUtil;
 import com.ksm.tts.utils.InformationUser;
 import java.io.IOException;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -48,14 +45,7 @@ public class ProfileController {
     @Autowired
     UniversityService universityService;
 
-    @Autowired
-    LocationService locationService;
 
-    @ResponseBody
-    @GetMapping("/api/getprovince")
-    public List<Province> getProvince() {
-        return locationService.getAllProvince(locationService.getProvince());
-    }
 
     @GetMapping("/")
     public String profileBasic(Model model) {

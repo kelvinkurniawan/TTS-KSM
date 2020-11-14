@@ -5,6 +5,8 @@
  */
 package com.ksm.tts.services;
 
+import com.ksm.tts.entities.City;
+import com.ksm.tts.entities.CityOutput;
 import com.ksm.tts.entities.Province;
 import com.ksm.tts.entities.ProvinceOutput;
 import java.util.List;
@@ -24,6 +26,8 @@ public class LocationService {
     
     Province province;
     ProvinceOutput provinceOutput;
+    City city;
+    CityOutput cityOutput;
     
     @Autowired
     RestTemplate restTemplate;
@@ -46,4 +50,23 @@ public class LocationService {
     public List getAllProvince(ProvinceOutput output) {
         return output.getProvinsi();
     }
+    
+    public CityOutput getCity(int id) {
+        CityOutput result;
+        
+        ResponseEntity<CityOutput> responseEntity = restTemplate.exchange(
+                "https://dev.farizdotid.com/api/daerahindonesia/kota?id_provinsi=" + id, 
+                HttpMethod.GET, 
+                null, 
+                new ParameterizedTypeReference<CityOutput>() {
+        });
+        
+        result = responseEntity.getBody();
+        return result;
+    }
+    
+    public List getAllCity(CityOutput output) {
+        return output.getKota_kabupaten();
+    }
+    
 }
