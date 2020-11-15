@@ -8,6 +8,7 @@ package com.ksm.tts.controllers;
 import com.ksm.tts.entities.EmailInput;
 import com.ksm.tts.entities.PasswordInput;
 import com.ksm.tts.entities.RegisterInput;
+import com.ksm.tts.entities.RegisterOutput;
 import com.ksm.tts.services.LoginService;
 import com.ksm.tts.services.MajorService;
 import com.ksm.tts.services.PasswordService;
@@ -71,10 +72,17 @@ public class AuthenticationController {
         return "register";
     }
 
-    @PostMapping("/register/execute")
+    @PostMapping("/register/perform_register")
     public String register(RegisterInput input) {
-        System.out.println(registerService.register(input));
-        return "index";
+
+        RegisterOutput registerOutput = registerService.register(input);
+        
+        if(registerOutput.isStatus()){
+            return "redirect:/?result=register_success";
+        }else{
+            return "redirect:/register/?error=" + registerOutput.getMessage();
+        }
+        
     }
 
     @GetMapping("/forgotpassword")

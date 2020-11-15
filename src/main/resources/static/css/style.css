@@ -9,7 +9,7 @@
     border-bottom: solid 1px #ddd;
     position: relative;
 }
-.nav-profile-btn{
+.nav-profile-btn, .nav-logout-btn{
     border-radius: 0!important;
     padding: 10px 20px;
     color: #1c1c1c;    
@@ -22,6 +22,16 @@
     text-transform: uppercase;
 }
 
+.nav-logout-btn{
+    color: red;
+    border-top: solid 1px #ddd!important;
+    border-right: solid 1px #ddd!important;
+    border-left: solid 1px #ddd!important;
+}
+.nav-logout-btn:hover{
+    color: #000;
+    transition: 1s all;
+}
 .nav-profile-btn.active, .nav-profile-btn:hover{
     color: #34c0eb!important;
     border-top: solid 2px #34c0eb!important;
@@ -127,6 +137,10 @@
 }
 
 .login-form .form-control, .fpass-form .form-control, .login-form .btn, .fpass-form .btn{
+    border-radius: 20px!important;
+    text-align: center;
+}
+.login-form .select2-container--default .select2-selection--single{
     border-radius: 20px;
 }
 .fpass-link{

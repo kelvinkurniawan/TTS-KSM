@@ -14,4 +14,5 @@ import lombok.Data;
 @Data
 public class RegisterOutput {
     private boolean status;
+    private String message;
 }

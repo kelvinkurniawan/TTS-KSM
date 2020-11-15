@@ -22,16 +22,27 @@
             });
 
             // Select2 Configuration
+            var pathname = window.location.pathname;
+
             $('#major').select2();
             $('#university').select2();
             $('#gender').select2();
             $('#province').select2();
             $('#city').select2();
-            $('#gender').prop("disabled", true);
-            $('#university').prop("disabled", true);
-            $('#major').prop("disabled", true);
-            $('#province').prop("disabled", true);
-            $('#city').prop("disabled", true);
+            if (pathname == "/register") {
+                $('#gender').prop("disabled", false);
+                $('#university').prop("disabled", false);
+                $('#major').prop("disabled", false);
+                $('#province').prop("disabled", false);
+                $('#city').prop("disabled", false);
+            } else {
+                $('#gender').prop("disabled", true);
+                $('#university').prop("disabled", true);
+                $('#major').prop("disabled", true);
+                $('#province').prop("disabled", true);
+                $('#city').prop("disabled", true);
+            }
+
 
             // Datepicker Configuration
             $("#birthday").datepicker({

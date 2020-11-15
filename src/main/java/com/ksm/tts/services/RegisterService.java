@@ -8,11 +8,8 @@ package com.ksm.tts.services;
 import com.ksm.tts.entities.RegisterInput;
 import com.ksm.tts.entities.RegisterOutput;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -24,19 +21,23 @@ public class RegisterService {
         
     @Autowired
     RestTemplate restTemplate;
-    
+   
+    RegisterOutput registerOutput = new RegisterOutput();
     private final String uri = "http://116.254.101.228:8080/ma_test/";
     
     public RegisterOutput register(RegisterInput input) {
-        HttpEntity<RegisterInput> request = new HttpEntity<>(input, null);
-        ResponseEntity<RegisterOutput> responseEntity = restTemplate.exchange(
-                uri + "register", 
-                HttpMethod.POST, 
-                request, 
-                new ParameterizedTypeReference<RegisterOutput>() {
-        });
         
-        return responseEntity.getBody();
+        try{
+            restTemplate.postForEntity(uri + "register", input, RegisterInput.class);
+            registerOutput.setStatus(true);
+            registerOutput.setMessage("register_success");
+            return registerOutput;
+        }catch(HttpStatusCodeException e){
+            registerOutput.setStatus(false);
+            String message = e.getMessage().split(":")[1].replace("[", "").replace("]", "");
+            registerOutput.setMessage(message);
+            return registerOutput;
+        }
     }
     
 }
