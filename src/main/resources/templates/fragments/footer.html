@@ -23,13 +23,15 @@
 
             // Select2 Configuration
             var pathname = window.location.pathname;
+            pathname = pathname.split("/");
+            pathname = pathname[1];
 
             $('#major').select2();
             $('#university').select2();
             $('#gender').select2();
             $('#province').select2();
             $('#city').select2();
-            if (pathname == "/register") {
+            if (pathname === "register") {
                 $('#gender').prop("disabled", false);
                 $('#university').prop("disabled", false);
                 $('#major').prop("disabled", false);
