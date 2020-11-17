@@ -8,6 +8,7 @@ package com.ksm.tts.controllers;
 import com.ksm.tts.services.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
@@ -20,12 +21,14 @@ public class NewsController {
     NewsService newsService;
     
     @GetMapping("/read/")
-    public String getAllNews(){
+    public String getAllNews(Model model){
+        model.addAttribute("title", " Read News ");
         return "news/allnews";
     }
     
     @GetMapping("/read/single")
-    public String performGetSingle(){
+    public String performGetSingle(Model model){
+        model.addAttribute("title", " Read News ");
         return "news/readsingle";
     }
 }

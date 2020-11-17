@@ -49,6 +49,7 @@ public class ProfileController {
 
     @GetMapping("/")
     public String profileBasic(Model model) {
+        model.addAttribute("title", " My Profile");
         model.addAttribute("basic", profileService.getProfileBasic(InformationUser.userId));
         model.addAttribute("address", profileService.getProfileAddress(InformationUser.userId));
         model.addAttribute("contact", profileService.getProfileContact(InformationUser.userId));

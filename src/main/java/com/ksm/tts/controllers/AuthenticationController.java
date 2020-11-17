@@ -66,6 +66,7 @@ public class AuthenticationController {
 
     @GetMapping("/register")
     public String register(Model model) {
+        model.addAttribute("title", " Register New Account ");
         model.addAttribute("person", new RegisterInput());
         model.addAttribute("major", majorService.getAll());
         model.addAttribute("university", universityService.getAll());
@@ -87,6 +88,7 @@ public class AuthenticationController {
 
     @GetMapping("/forgotpassword")
     public String forgotPasswordInputEmail(Model model) {
+        model.addAttribute("title", " Reset Password ");
         model.addAttribute("email", new PasswordInput());
         return "forgotpassword/forgotpasswordinputemail";
     }
@@ -99,6 +101,7 @@ public class AuthenticationController {
 
     @GetMapping("/forgotpassword/{verificationCode}")
     public String forgotPasswordInputNewPassword(@PathVariable("verificationCode") String verificationCode, Model model) {
+        model.addAttribute("title", " Change Password ");
         model.addAttribute("password", new PasswordInput());
         model.addAttribute("verificationCode", verificationCode);
         return "forgotpassword/forgotpasswordinputnewpassword";
