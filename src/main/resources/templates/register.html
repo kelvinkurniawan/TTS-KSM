@@ -15,8 +15,7 @@ and open the template in the editor.
                 <div class="form-section" style="width: 80%">                
                     <h1 class="display-4 mb-5" style="width: 100%">Create Account</h1>
                     <div class="col-md-10 offset-md-1 align-items-center justify-content-center">
-                        <form th:object="${person}" th:action="@{/register/perform_register}" method="post" class="login-form" autocomplete="off">
-                            <input autocomplete="false" name="hidden" type="text" style="display:none;">
+                        <form th:object="${person}" th:action="@{/register/perform_register}" method="post" class="login-form">
                             <div class="form-group">
                                 <input type="text" name="birthDate" id="birthday" class="form-control" placeholder="Birthdate" required="required" />
                             </div>

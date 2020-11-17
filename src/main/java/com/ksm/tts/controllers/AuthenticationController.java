@@ -51,7 +51,8 @@ public class AuthenticationController {
     PasswordService passwordService;
 
     @GetMapping("/login")
-    public String login() {
+    public String login(Model model) {
+        model.addAttribute("title", " Login ");
         return "login";
     }
 
@@ -89,7 +90,7 @@ public class AuthenticationController {
     @GetMapping("/forgotpassword")
     public String forgotPasswordInputEmail(Model model) {
         model.addAttribute("title", " Reset Password ");
-        model.addAttribute("email", new PasswordInput());
+        model.addAttribute("email", new EmailInput());
         return "forgotpassword/forgotpasswordinputemail";
     }
 

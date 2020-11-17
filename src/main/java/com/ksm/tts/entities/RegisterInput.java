@@ -6,12 +6,14 @@
 package com.ksm.tts.entities;
 
 import lombok.Data;
+
 /**
  *
  * @author Kelvi
  */
 @Data
 public class RegisterInput {
+
     private String birthDate;
     private String currentCompany;
     private String degree;
@@ -26,4 +28,5 @@ public class RegisterInput {
     private String university;
     private String username;
     
+
 }

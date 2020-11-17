@@ -49,7 +49,7 @@ public class ProfileController {
 
     @GetMapping("/")
     public String profileBasic(Model model) {
-        model.addAttribute("title", " My Profile");
+        model.addAttribute("title", " My Profile ");
         model.addAttribute("basic", profileService.getProfileBasic(InformationUser.userId));
         model.addAttribute("address", profileService.getProfileAddress(InformationUser.userId));
         model.addAttribute("contact", profileService.getProfileContact(InformationUser.userId));
@@ -63,12 +63,13 @@ public class ProfileController {
 
     @GetMapping("/profile/changephoto")
     public String updatePhoto(Model model) {
+        model.addAttribute("title", " Change Photo ");
         model.addAttribute("userId", InformationUser.userId);
         return "profiles/updatephoto";
     }
 
     @PostMapping("profile/changephoto/perform_update")
-    public String profilePhotoPerformUpdate(@RequestParam("image") MultipartFile multipartFile) throws IOException {
+    public String profilePhotoPerformUpdate(@RequestParam("image") MultipartFile multipartFile ) throws IOException {
         String filename = InformationUser.userId + ".jpg";
         FileUploadUtil fileUpload = new FileUploadUtil();
         fileUpload.save(multipartFile, filename);

@@ -8,6 +8,10 @@ package com.ksm.tts.services;
 import com.ksm.tts.entities.RegisterInput;
 import com.ksm.tts.entities.RegisterOutput;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
@@ -27,8 +31,14 @@ public class RegisterService {
     
     public RegisterOutput register(RegisterInput input) {
         try{
-            restTemplate.postForEntity(uri + "register", input, RegisterInput.class);
-            restTemplate.postForEntity(uri + "register", input, RegisterInput.class);
+            HttpEntity<RegisterInput> request = new HttpEntity<>(input, null);
+            ResponseEntity<Boolean> responseEntity = restTemplate.exchange(
+                    uri + "register",
+                    HttpMethod.POST,
+                    request,
+                    new ParameterizedTypeReference<Boolean>() {
+            });
+            System.out.println(responseEntity);
             registerOutput.setStatus(true);
             registerOutput.setMessage("register_success");
             return registerOutput;
@@ -38,6 +48,7 @@ public class RegisterService {
             registerOutput.setMessage(message);
             return registerOutput;
         }
+
     }
     
 }
