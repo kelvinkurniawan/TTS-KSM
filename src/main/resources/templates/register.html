@@ -9,67 +9,72 @@ and open the template in the editor.
 
     <div th:replace="fragments/header"></div>
 
-    <body class="with-bg pt-5 mt-5">
-        <div class="container">
-            <div class="row text-center">
-                <div class="col-md-12 mb-5">
-                    <h1 class="display-4 text-white">Register new account</h1>
+    <body>
+        <div class="row no-gutters text-center">
+            <div class="col-md-8 pt-5 d-flex align-items-center justify-content-center">
+                <div class="form-section" style="width: 80%">                
+                    <h1 class="display-4 mb-5" style="width: 100%">Create Account</h1>
+                    <div class="col-md-10 offset-md-1 align-items-center justify-content-center">
+                        <form th:object="${person}" th:action="@{/register/perform_register}" method="post" class="login-form" autocomplete="off">
+                            <input autocomplete="false" name="hidden" type="text" style="display:none;">
+                            <div class="form-group">
+                                <input type="text" name="birthDate" id="birthday" class="form-control" placeholder="Birthdate" required="required" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="currentCompany" class="form-control" placeholder="Current Company" required="required" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="degree" class="form-control" placeholder="Degree" required="required" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="email" class="form-control" placeholder="Email" required="required" />
+                            </div>
+                            <div class="form-group">
+                                <select name="gender" id="gender" class="form-control" placeholder="Gender" required="required" >
+                                    <option>Laki-laki</option>
+                                    <option>Perempuan</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="job" class="form-control" placeholder="Job" required="required" />
+                            </div>
+                            <div class="form-group">
+                                <select name="major" id="major" class="form-control" placeholder="Major" required="required" >
+                                    <option th:each="as : ${major}" th:value="${as.name}" th:text="${as.name}"/>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="name" class="form-control" placeholder="Name" required="required" />
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="password" class="form-control" placeholder="Password" required="required" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="phone" class="form-control" placeholder="Phone" required="required" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="status" class="form-control" placeholder="Status" required="required" />
+                            </div>
+                            <div class="form-group">
+                                <select name="university" id="university" class="form-control" placeholder="University" required="required" >
+                                    <option th:each="as : ${university}" th:value="${as.name}" th:text="${as.name}"/>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="username" class="form-control" placeholder="Username" required="required" />
+                            </div>
+                            <div class="form-group">
+                                <button name="submit" type="submit" class="btn btn-info bg-my-color btn-block">Register</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div class="col-md-6 offset-md-3">
-                    <form th:object="${person}" th:action="@{/register/perform_register}" method="post" class="login-form">
-                        <div class="form-group">
-                            <input type="text" name="birthDate" id="birthday" class="form-control" placeholder="Birthdate" required="required" />
-                        </div>
-                        <div class="form-group">
-                            <input type="text" name="currentCompany" class="form-control" placeholder="Current Company" required="required" />
-                        </div>
-                        <div class="form-group">
-                            <input type="text" name="degree" class="form-control" placeholder="Degree" required="required" />
-                        </div>
-                        <div class="form-group">
-                            <input type="text" name="email" class="form-control" placeholder="Email" required="required" />
-                        </div>
-                        <div class="form-group">
-                            <select name="gender" id="gender" class="form-control" placeholder="Gender" required="required" >
-                                <option>Laki-laki</option>
-                                <option>Perempuan</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" name="job" class="form-control" placeholder="Job" required="required" />
-                        </div>
-                        <div class="form-group">
-                            <select name="major" id="major" class="form-control" placeholder="Major" required="required" >
-                                <option th:each="as : ${major}" th:value="${as.name}" th:text="${as.name}"/>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" name="name" class="form-control" placeholder="Name" required="required" />
-                        </div>
-                        <div class="form-group">
-                            <input type="password" name="password" class="form-control" placeholder="Password" required="required" />
-                        </div>
-                        <div class="form-group">
-                            <input type="text" name="phone" class="form-control" placeholder="Phone" required="required" />
-                        </div>
-                        <div class="form-group">
-                            <input type="text" name="status" class="form-control" placeholder="Status" required="required" />
-                        </div>
-                        <div class="form-group">
-                            <select name="university" id="university" class="form-control" placeholder="University" required="required" >
-                                <option th:each="as : ${university}" th:value="${as.name}" th:text="${as.name}"/>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" name="username" class="form-control" placeholder="Username" required="required" />
-                        </div>
-                        <div class="form-group">
-                            <button name="submit" type="submit" class="btn btn-info bg-my-color btn-block">Register</button>
-                        </div>
-                    </form>
-                    <div class="forgot-pass mb-3"><a href="/forgotpassword" class="fpass-link">Lost your password?</a></div>
-                    <div class="divider text-white">or </div>
-                    <div class="register-pass mt-4"><a href="/forgotpassword" class="fpass-link">Register</a></div>
+            </div>
+            <div class="col-md-4 bg-my-color d-flex align-items-center justify-content-center banner-login-fixed">
+                <div class="greeting-section mx-5">
+                    <h2 class="mb-3 text-white">Welcome back, dude!</h2>
+                    <p class="lead text-white">To keep connected with us please login with your personal data</p>
+                    <a href="/login" class="btn btn-primary btn-ghost">Login</a>
                 </div>
             </div>
         </div>

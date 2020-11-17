@@ -26,8 +26,8 @@ public class RegisterService {
     private final String uri = "http://116.254.101.228:8080/ma_test/";
     
     public RegisterOutput register(RegisterInput input) {
-        
         try{
+            restTemplate.postForEntity(uri + "register", input, RegisterInput.class);
             restTemplate.postForEntity(uri + "register", input, RegisterInput.class);
             registerOutput.setStatus(true);
             registerOutput.setMessage("register_success");

@@ -44,17 +44,10 @@ and open the template in the editor.
             <div class="card bg-white mt-5 mx-5 p-5">
 
                 <div class="d-flex justify-content-between align-items-start mb-5">
-                    <h3 class="display-4">My Profile</h3>
+                    <h3 class="display-4">Read News</h3>
                 </div>
 
-                <div th:replace="fragments/profile-navigation"></div>
-
-                <div class="tab-content" id="myTabContent">
-                    <div th:replace="profiles/basic"></div>
-                    <div th:replace="profiles/address"></div>
-                    <div th:replace="profiles/contact"></div>
-                    <div th:replace="profiles/occupation"></div>
-                    <div th:replace="profiles/education"></div>
+                <div class="post-box">
                 </div>
 
                 <div th:replace="fragments/footer"></div>
@@ -77,11 +70,15 @@ and open the template in the editor.
     </div>
     <script>
         var result = getUrlParameter('result');
-
         $(document).ready(function () {
-            if (result == 'update_success') {
-                $('#alert').toast('show');
-            }
+        if (result == 'update_success') {
+        $('#alert').toast('show');
+        }
+        });
+        $.getJSON("/api/getnews/", function (result) {
+        for (i = 0; i < result.length; i++){
+            $(".post-box").append('<div class="post py-4"><div class="row"><div class="col-md-4"><img src="'+ result[i].poster +'" width="100%"/></div><div class="col-md-8 d-flex flex-column justify-content-beetwen"> <h3 class="post-title"> ' + result[i].judul + ' </h3><div class="post-detail"> <p class="category">' + result[i].tipe + ' </p><p class="time"> • ' + result[i].waktu + '</p></div><a href="/read/single?url=' + result[i].link + '">Read more..</a> </div></div></div>');
+        }
         });
     </script>
 </body>

@@ -85,6 +85,7 @@
 .form-control.plaintext{
     background: #fff;
     border: #fff;
+    cursor: default;
 }
 
 .form-control.plaintext:active, .form-control.plaintext:focus, .form-control:focus{
@@ -137,8 +138,9 @@
 }
 
 .login-form .form-control, .fpass-form .form-control, .login-form .btn, .fpass-form .btn{
-    border-radius: 20px!important;
+    border-radius: 5px!important;
     text-align: center;
+    border: 1px solid #ced4da;
 }
 .login-form .select2-container--default .select2-selection--single{
     border-radius: 20px;
@@ -151,4 +153,54 @@
     color: #cdcdcd;
     text-decoration: none;
     transition: 1s all;
+}
+
+.btn-ghost{
+    background: transparent;
+    color: #fff;
+    border:  2px solid #efefef;
+    border-radius: 25px;
+    padding: 10px 60px;
+    transition: .5s all;
+}
+
+.btn-ghost:hover{
+    background: #fff;
+    color: #34c0eb;
+    transition: .5s all;
+    border:  2px solid #efefef;
+}
+.banner-login-fixed{
+    position: fixed;
+    height: 100%;
+    right: 0;
+}
+
+.navbar{
+    border-bottom: solid 1px #ddd!important;
+}
+
+.logout-btn{
+    color: red;
+    transition: .5s all;
+
+}
+.logout-btn:hover{
+    text-decoration: none;
+    color: darkred;
+}
+
+.post-title{
+    font-size: 20px;
+}
+
+.post .category, .post .time{
+    margin-bottom: 0px;
+    font-size: 12px;
+    display: inline-block;
+}
+
+.post .category{
+    font-style: italic;
+    margin-right: 5px;
 }

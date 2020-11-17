@@ -55,7 +55,6 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
             final Authentication auth = new UsernamePasswordAuthenticationToken(principal, password, grantedAuths);
             
             InformationUser.userId = loginOutput.getUser().getId();
-            System.out.println(InformationUser.userId);
             
             return auth;
         } else {
